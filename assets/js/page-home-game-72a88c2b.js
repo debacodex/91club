@@ -1,0 +1,20 @@
+import{r as c,C as M,X as W,G as H,T as q,R as D,aW as O,B as i,aX as h,E as F,H as I,I as E,at as X,au as J,ao as S,an as k,ay as Q,N as b,J as p,Q as x,aA as Y,P as K,O as A,aY as G}from"./common.modules-6670d68a.js";import{G as Z,a1 as ee,a$ as C,b0 as te,b1 as ae,c as ne,_ as se}from"./page-activity-ActivityDetail-88cfafe3.js";import"./page-turntable-assets-0cfb722e.js";import"./native/index-9800af95.js";import"./en-438265e0.js";function oe(L,u,_={immediate:!1}){const n=c(!1);let e=null;const o=()=>{const r=`
+      let intervalId = null;
+      self.onmessage = (e) => {
+        const { command, interval } = e.data;
+
+        switch (command) {
+          case 'start':
+            if (!intervalId) {
+              intervalId = setInterval(() => postMessage('tick'), interval);
+            }
+            break;
+          case 'pause':
+            clearInterval(intervalId);
+            intervalId = null;
+            break;
+        }
+      };
+    `,m=new Blob([r],{type:"application/javascript"});return new Worker(URL.createObjectURL(m))},s=()=>{e&&(n.value=!0,e.postMessage({command:"start",interval:u}))},d=()=>{e&&(n.value=!1,e.postMessage({command:"pause"}))},w=()=>{n.value||s()};return M(()=>{e=o(),e.onmessage=r=>{r.data==="tick"&&L()},_.immediate&&s()}),W(()=>{d(),e==null||e.terminate(),e=null}),{start:s,pause:d,resume:w,isActive:n}}const re={class:"game-right"},le={class:"game-text"},ie=["src"],ce=H({__name:"index",setup(L){const u=q(),_=Z(),n=c(null),e=c(!1),o=D(),{css:s,load:d,unload:w}=O(""),{getSelfCustomerServiceLink:r}=ee({ServerType:2}),m=c(0),N=i(()=>{if(!C)return{};if(!e)return{height:`${window.innerHeight}px`}}),R=i(()=>{const t=u.query.url;if(!t)return"";const a=te(t||"");return a.startsWith("https:")?a:`data:text/html;charset=utf-8,${encodeURIComponent(a)}`}),v=i(()=>{const t=u.query.vendorCode;return t||""}),T=i(()=>!C&&!["PG"].includes(v.value));i(()=>e.value?!1:!["ARLottery"].includes(v.value));function g(){C&&setTimeout(()=>{window.matchMedia("(orientation: landscape)").matches?(s.value=`
+            	    body #app { width: 100%; }
+            	`,e.value=!0,document.documentElement.classList.add("landscape")):(s.value="",e.value=!1,document.documentElement.classList.remove("landscape"))},10)}h(window,"resize",g),h(window,"orientationchange",g),h(window,"message",t=>{t.data==="game"&&o.go(-1)});const l=c(null),U=()=>{f()},f=()=>{document.documentElement.style.setProperty("--vh",`${window.innerHeight*.01}px`)},$=()=>{const t=o.resolve({name:"wallet"});window.open(t.href,"_blank")};async function B(){try{const t=await ae();t.code===0&&(m.value=t.data.balance)}catch{}}const j=async()=>{_.notifyARGame(!0),o.push({name:"home"})},{pause:z}=oe(()=>{B()},1e3*12,{immediate:!0});return M(async()=>{g(),d(),f(),window.addEventListener("resize",f),setTimeout(()=>{B()},2e3)}),F(()=>{w(),z(),window.removeEventListener("resize",f),document.documentElement.classList.remove("landscape"),l.value&&(l.value.src="about:blank",l.value.remove(),l.value=null)}),(t,a)=>{const y=I("svg-icon"),P=I("NavBar");return T.value?k("v-if",!0):(b(),E("div",{key:0,class:"game-iframe",ref_key:"fullscreenElement",ref:n,style:Q({height:N.value})},[["ARLottery"].includes(v.value)?k("v-if",!0):(b(),X(P,{key:0,class:S({"landscape-nav":e.value}),"left-arrow":"",onClickLeft:j},{right:J(()=>[p("div",re,[p("span",le,[x(y,{name:"game_moneyb"}),Y(" "+K(A(ne)(m.value)),1)]),p("span",{class:"game-icon",onClick:a[0]||(a[0]=G(V=>$(),["stop"]))},[x(y,{name:"icon_addwallet"})]),p("span",{class:"game-icon",onClick:a[1]||(a[1]=G(V=>A(r)(),["stop"]))},[x(y,{name:"icon_customer3"})])])]),_:1},8,["class"])),R.value?(b(),E("iframe",{key:1,class:S({lotteryfull:["ARLottery"].includes(v.value),landscape:e.value}),sandbox:"allow-forms allow-orientation-lock allow-scripts allow-same-origin allow-top-navigation allow-popups",allowfullscreen:"true",ref_key:"iframeRef",ref:l,src:R.value,onLoad:U},null,42,ie)):k("v-if",!0)],4))}}});const pe=se(ce,[["__scopeId","data-v-bc67dde2"],["__file","/Users/juneqiu/Desktop/june/project/ar_v2_vue/src/views/home/game/index.vue"]]);export{pe as default};
